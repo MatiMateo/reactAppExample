@@ -1,4 +1,4 @@
-const ListItem = (props) => {
+const ItemListContainer = (props) => {
     return (
     <div className={props.className}>
         <a className='z-0 p-4 hover:bg-[#f7dcca] hover:text-black' href="../../public/index.html">Item 1</a>
@@ -7,4 +7,4 @@ const ListItem = (props) => {
     </div>
     )
 }
-export default ListItem;
+export default ItemListContainer;
