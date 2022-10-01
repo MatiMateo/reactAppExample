@@ -39,8 +39,8 @@
 .menu__contacto:hover .menu__contacto-content {display: block;}
 
 .slide-bottom {
-	-webkit-animation: slide-bottom 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	        animation: slide-bottom 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	-webkit-animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 /* ----------------------------------------------
@@ -57,21 +57,31 @@
  */
  @-webkit-keyframes slide-bottom {
   0% {
-    -webkit-transform: translateY(-10rem);
-            transform: translateY(-10rem);
+    -webkit-transform: translateY(-4rem);
+            transform: translateY(-4rem);
+            opacity: 0;
+  }
+  45% {
+    opacity: 0;
   }
   100% {
     -webkit-transform: translateY(0);
             transform: translateY(0);
+            opacity: 1;
   }
 }
 @keyframes slide-bottom {
   0% {
-    -webkit-transform: translateY(-10rem);
-            transform: translateY(-10rem);
+    -webkit-transform: translateY(-4rem);
+            transform: translateY(-4rem);
+            opacity: 0;
+  }
+  45% {
+    opacity: 0;
   }
   100% {
     -webkit-transform: translateY(0);
             transform: translateY(0);
+            opacity: 1;
   }
 }

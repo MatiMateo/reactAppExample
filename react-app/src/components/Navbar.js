@@ -2,6 +2,7 @@ import ItemListContainer from './ItemListContainer';
 import CartWidget from './CartWidget';
 import MenuMovil from './MenuMovil';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = ({className}) => {
   
@@ -16,9 +17,9 @@ const Navbar = ({className}) => {
     return (
       <div className={className}>
         <nav className="flex items-center justify-end w-full text-white">
-          <div className={`${ menuMovil ? 'hidden' : 'flex'} absolute shadow-2xl slide-bottom shadow-black rounded-lg sm:relative sm:top-0 sm:z-10 p-2 flex-col items-center justify-center text-right w-full left-0 bg-black -z-10 opacity-95 sm:opacity-100 top-[18vw] sm:flex sm:flex-row`}>
-              <a href="index.html" className='w-full sm:text-center'>Tienda</a>
-              <div className='flex flex-col w-full my-2 sm:m-0 sm:items-center'>
+          <ul className={`${ menuMovil ? 'hidden' : 'flex'} absolute shadow-2xl slide-bottom shadow-black rounded-lg sm:relative sm:top-0 sm:z-10 p-2 flex-col items-center justify-center text-right w-full left-0 bg-black -z-50 opacity-95 sm:opacity-100 top-[18vw] sm:flex sm:flex-row`}>
+              <li className='w-full sm:text-center'><Link to={'/'}>Tienda</Link></li>
+              <li className='flex flex-col w-full my-2 sm:m-0 sm:items-center'>
                 <button onClick={toggleMenu} type='button' className='relative flex flex-row items-end justify-end'>
                   <span>
                     <svg className="items-center w-4 h-6 sm:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
@@ -29,10 +30,10 @@ const Navbar = ({className}) => {
                   </span>
                 </button>
                 <ItemListContainer greeting='Hola, soy un Item' className={`${ menu ? 'flex' : 'hidden'} absolute flex-col w-36 text-center bg-black rounded-lg menuContacto top-10`}/>
-              </div>
-              <CartWidget className='flex justify-end w-full sm:place-content-center'/>
-            </div>
-            <MenuMovil onClick={toggleMenuMovil} className='flex sm:hidden'/>
+              </li>
+              <li className='w-full'><Link to={'/detail'}><CartWidget className='flex justify-end w-full sm:place-content-center'/></Link></li>
+          </ul>
+            <MenuMovil onClick={toggleMenuMovil} className='relative z-30 flex sm:hidden'/>
         </nav>
       </div>
     )
