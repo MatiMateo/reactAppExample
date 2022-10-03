@@ -1,10 +1,15 @@
 import Portada from "./components/Portada";
+import Boton from "../../components/Boton";
+import { Link } from "react-router-dom";
 const Home = ({className}) => {
     return (
         <body className={className}>
-            <div className="h-[100vh]">
-                <Portada className='w-screen h-full px-2 my-2 bg-center bg-cover opacity-70 bg-img-portada'>
-                    <div className="flex flex-col items-center justify-center h-full">Soy la portada</div>
+            <div className="">
+                <Portada className='w-full flex sm:grid sm:grid-cols-2 justify-center items-center object-cover px-2 my-2 h-[700px] md:h-[1080px]'>
+                    <div className="absolute flex flex-col items-center justify-center h-full opacity-100 sm:relative">
+                        <div>Cleo Tienda</div>
+                        <Boton><Link to='/categories'>Ver Categorías</Link></Boton>
+                    </div>
                 </Portada>
             </div>
         </body>

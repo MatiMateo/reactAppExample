@@ -18,7 +18,7 @@ const Navbar = ({className}) => {
       <div className={className}>
         <nav className="flex items-center justify-end w-full text-white">
           <ul className={`${ menuMovil ? 'hidden' : 'flex'} absolute shadow-2xl slide-bottom shadow-black rounded-lg sm:relative sm:top-0 sm:z-10 p-2 flex-col items-center justify-center text-right w-full left-0 bg-black -z-50 opacity-95 sm:opacity-100 top-[18vw] sm:flex sm:flex-row`}>
-              <li className='w-full sm:text-center'><Link to={'/'}>Tienda</Link></li>
+              <li className='w-full sm:text-center'><Link to={'/categories'}>Tienda</Link></li>
               <li className='flex flex-col w-full my-2 sm:m-0 sm:items-center'>
                 <button onClick={toggleMenu} type='button' className='relative flex flex-row items-end justify-end'>
                   <span>
