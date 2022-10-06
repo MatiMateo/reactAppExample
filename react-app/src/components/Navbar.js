@@ -1,8 +1,9 @@
-import ItemListContainer from './ItemListContainer';
+import BotonMenuContacto from './BotonMenuContacto';
 import CartWidget from './CartWidget';
 import MenuMovil from './MenuMovil';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import MenuContacto from './MenuContacto';
 
 const Navbar = ({className}) => {
   
@@ -20,16 +21,8 @@ const Navbar = ({className}) => {
           <ul className={`${ menuMovil ? 'hidden' : 'flex'} absolute shadow-2xl slide-bottom shadow-black rounded-lg sm:relative sm:top-0 sm:z-10 p-2 flex-col items-center justify-center text-right w-full left-0 bg-black -z-50 opacity-95 sm:opacity-100 top-[18vw] sm:flex sm:flex-row`}>
               <li className='w-full sm:text-center'><Link to={'/categories'}>Tienda</Link></li>
               <li className='flex flex-col w-full my-2 sm:m-0 sm:items-center'>
-                <button onClick={toggleMenu} type='button' className='relative flex flex-row items-end justify-end'>
-                  <span>
-                    <svg className="items-center w-4 h-6 sm:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
-                  </span>
-                  Contacto 
-                  <span>
-                    <svg className="items-center hidden w-4 h-6 sm:flex" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
-                  </span>
-                </button>
-                <ItemListContainer greeting='Hola, soy un Item' className={`${ menu ? 'flex' : 'hidden'} absolute flex-col w-36 text-center bg-black rounded-lg menuContacto top-10`}/>
+                <BotonMenuContacto onClick={toggleMenu} type='button' className='relative flex flex-row items-end justify-end' />
+                <MenuContacto greeting='Hola, soy un Item' className={`${ menu ? 'flex' : 'hidden'} absolute flex-col w-36 text-center bg-black rounded-lg menuContacto top-10`}/>
               </li>
               <li className='w-full'><Link to={'/detail'}><CartWidget className='flex justify-end w-full sm:place-content-center'/></Link></li>
           </ul>
