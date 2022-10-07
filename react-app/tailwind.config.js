@@ -6,6 +6,9 @@ module.exports = {
 ],
   theme: {
     extend: {
+      gridTemplateColumns: {
+        'autoFitList': 'repeat(auto-fit, minmax(200px, 1fr))'
+      },
       backgroundImage: {
         'img-portada': 'url(./images/prod_4.jpeg)'
       },
