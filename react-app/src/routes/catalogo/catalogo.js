@@ -1,29 +1,33 @@
 import '../../App.css';
 import { useState } from "react";
 import { useEffect } from "react";
-import ItemListContainer from "../../components/ItemListContainer";
-import { Link } from 'react-router-dom';
+import Boton from '../../components/Boton';
+import ItemList from '../../components/ItemList';
+/*import { Link } from 'react-router-dom';*/
 const Catalogo = () => {
-    const [producto,setProducto] = useState([])
+
+    const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon')
+    const [page,setPage] = useState()
+
     useEffect(() => {
-        fetch('./productos.json').then(res => res.json()).then(prod => setProducto(prod))
-    }, []);
+        fetch (url)
+        .then(res=>res.json())
+        .then(list => setPage(list))
+    }, [url]);
+    const paginationButtonClickHandler = (newUrl) =>{
+        setUrl(newUrl)
+    }
     return (
-        <div className='itemList place-content-center'>
-            {producto.map((prod) =><ItemListContainer key={prod.id}
-                                image={prod.img} 
-                                alt={prod.name} 
-                                classNameImg='relative' 
-                                children={
-                                    <div className='flex flex-col p-2'>
-                                        <Link to='/detail'>
-                                            {prod.name}
-                                        </Link>
-                                        <div>
-                                            {prod.price}
-                                        </div>
-                                    </div>} />
-                                )}
+        <div>
+            {!page ? <div>Cargando...</div> : 
+            <div>
+                <div className='flex items-center justify-center w-full m-2'>{page.previous ? <Boton onClick={() =>paginationButtonClickHandler(page.previous)}>Prev</Boton> : <Boton disabled='disabled'>Prev</Boton>}
+                {page.next ? <Boton onClick={() =>paginationButtonClickHandler(page.next)}>Next</Boton> : <Boton disabled='disabled'>Next</Boton>}</div>
+                <ItemList page={page.results} />
+                <div className='flex items-center justify-center w-full m-2'>{page.previous ? <Boton onClick={() =>paginationButtonClickHandler(page.previous)}>Prev</Boton> : <Boton disabled='disabled'>Prev</Boton>}
+                {page.next ? <Boton onClick={() =>paginationButtonClickHandler(page.next)}>Next</Boton> : <Boton disabled='disabled'>Next</Boton>}</div>    
+            </div>}
+            
         </div>
     )
 }
