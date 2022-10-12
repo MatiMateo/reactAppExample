@@ -1,14 +1,27 @@
-import Counter from "../../components/Counter";
-const Detail = ({className}) => {
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import ItemDetail from "./components/ItemDetail";
+/*import Counter from "../../components/Counter";*/
+const Detail = () => {
+    const [pokeInfo, setPokeInfo] = useState({})
+    const {id} = useParams()
+    useEffect(() => {
+        fetch (`https://pokeapi.co/api/v2/pokemon/${id}/`)
+        .then(res => res.json())
+        .then(info => setPokeInfo(info))
+    }, [id])
+
     return (
-        <body className={className}>
-            <div className="text-lg text-white bg-red-600"><p>Pido disculpas a mi tutor corrector! 
-                LLegué a esta ruta desde un local .json sin url definida a las 23:43.
-                Y se me agotaron las fuerzas y recursos para seguir.
-                </p>
-            </div>
-            <Counter/>
-        </body>
+        <div>
+            {Object.keys(pokeInfo).length === 0 ? <div>Cargando...</div> : 
+            <ItemDetail className={"relative w-full bg-verysoft-pink-500 border-verysoft-pink-500 border-[0.5px] rounded-md"}>
+                <div>
+                    <h1>{pokeInfo.name}</h1>
+                    <img src={pokeInfo.sprites.other.dream_world.front_default} alt={pokeInfo.name} />
+                    <p>{pokeInfo.height}</p>
+                </div>
+            </ItemDetail>}
+        </div>
     )
 }
 

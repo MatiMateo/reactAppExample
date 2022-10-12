@@ -12,8 +12,8 @@ function App() {
         <NavbarContainer />
         <Routes>
               <Route path='/' element={<Home className='relative' />}></Route>
-              <Route path='/detail' element={<Detail className='relative' />}></Route>
               <Route path='/catalogo' element={<Catalogo className='relative' />}></Route>
+              <Route path='/catalogo/:id' element={<Detail className='relative' />}></Route>
         </Routes>
       </Router>
   );
