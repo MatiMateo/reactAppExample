@@ -24,7 +24,7 @@ const Navbar = ({className}) => {
                 <BotonMenuContacto onClick={toggleMenu} type='button' className='relative flex flex-row items-end justify-end' />
                 <MenuContacto greeting='Hola, soy un Item' className={`${ menu ? 'flex' : 'hidden'} absolute flex-col w-36 text-center bg-black rounded-lg menuContacto top-10`}/>
               </li>
-              <li className='w-full'><Link to={'/detail'}><CartWidget className='flex justify-end w-full sm:place-content-center'/></Link></li>
+              <li className='w-full'><Link to={'/cart'}><CartWidget className='flex justify-end w-full sm:place-content-center'/></Link></li>
           </ul>
             <MenuMovil onClick={toggleMenuMovil} className='relative z-30 flex sm:hidden'/>
         </nav>
