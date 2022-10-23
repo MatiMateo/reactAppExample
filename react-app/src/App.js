@@ -3,8 +3,8 @@ import NavbarContainer from './components/NavbarContainer';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Detail from './routes/detail/Detail';
 import Home from './routes/home/Home';
-import Catalogo from './routes/catalogo/catalogo';
 import CartContainer from './routes/cart/CartContainer';
+import CategoryListContainer from './routes/categories/CategoryListContainer';
 
 
 function App() {
@@ -13,8 +13,8 @@ function App() {
         <NavbarContainer />
         <Routes>
               <Route path='/' element={<Home className='relative' />}></Route>
-              <Route path='/catalogo' element={<Catalogo className='relative' />}></Route>
-              <Route path='/catalogo/:id' element={<Detail className='relative' />}></Route>
+              <Route path='/categories' element={<CategoryListContainer className='relative' />}></Route>
+              <Route path='/categories/:id' element={<Detail className='relative' />}></Route>
               <Route path='/cart' element={<CartContainer className='relative' />}></Route>
         </Routes>
       </Router>
