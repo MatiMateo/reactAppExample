@@ -1,11 +1,12 @@
-import CategoryItem from "./CategoryItem";
+import '../../../App.css'
+import CategoryItem from "./CategoryItem"
 
 const CategoryList = () => {
     return (
-        <div>
+        <div className="mt-2 itemList">
             <CategoryItem />
         </div>
     )
 }
 
-export default CategoryList;
+export default CategoryList
