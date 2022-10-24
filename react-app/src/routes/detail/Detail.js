@@ -1,23 +1,28 @@
-import { useEffect, useState } from "react";
+import { useEffect, useContext } from "react";
+/* import ItemDetailContainer from "./components/ItemDetailContainer";
+import ItemDetail from "./components/ItemDetail"; */
+import {getFirestore, collection, getDocs} from 'firebase/firestore';
+import Spinner from '../../components/Spinner'
+import { CategoryContext } from "../../contexts/CategoryContext";
 import { useParams } from "react-router-dom";
-import ItemDetailContainer from "./components/ItemDetailContainer";
-import ItemDetail from "./components/ItemDetail";
 /*import Counter from "../../components/Counter";*/
 const Detail = () => {
-    const [pokeInfo, setPokeInfo] = useState({})
-    const {id} = useParams()
+    const {categories, setCategories} = useContext(CategoryContext)
+    const {prodCollection} = useParams();
     useEffect(() => {
-        fetch (`https://pokeapi.co/api/v2/pokemon/${id}/`)
-        .then(res => res.json())
-        .then(info => setPokeInfo(info))
-    }, [id])
+        const db = getFirestore()
+        const categoriesProdCollection = collection(db, `productos`)
+        /* const categoriesCollection = collection(db, `${param}`) */
+        getDocs(categoriesProdCollection).then(snapshot => {
+            const arrProdCategories = snapshot.docs.map((catgs) => ({id: catgs.id, key: catgs.key, ...catgs.data()}))
+            setCategories(arrProdCategories)
+            console.log(arrProdCategories)
+        })
+    }, [setCategories])
 
     return (
         <div>
-            {Object.keys(pokeInfo).length === 0 ? <div>Cargando...</div> : 
-            <ItemDetailContainer className={"flex relative items-center justify-center"}>
-                <ItemDetail name={pokeInfo.name} image={pokeInfo.sprites.other.dream_world.front_default} height={pokeInfo.height} weight={pokeInfo.weight} />
-            </ItemDetailContainer>}
+            
         </div>
     )
 }

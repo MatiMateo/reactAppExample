@@ -10,8 +10,7 @@ const CategoryListContainer = () => {
         const db = getFirestore()
         const categoriesCollection = collection(db, 'productos')
         getDocs(categoriesCollection).then(snapshot => {
-            const arrValuesCategories = snapshot.docs.map((catgs1) => console.log(catgs1.key))
-            const arrCategories = snapshot.docs.map((catgs) => ({ key: catgs.key, ...catgs.data()}))
+            const arrCategories = snapshot.docs.map((catgs) => ({ id: catgs.id, key: catgs.key, ...catgs.data()}))
             setCategories(arrCategories)
         })
     }, [setCategories])

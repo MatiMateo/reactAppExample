@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import {CategoryContext} from "../../../contexts/CategoryContext";
 
 const CategoryItem = () => {
-    const {categories} = useContext(CategoryContext)    
+    const {categories} = useContext(CategoryContext)
+    console.log(categories);    
     return ( 
            categories.map(catg =>
                     <div key={catg.key} className="relative w-auto bg-verysoft-pink-500 border-verysoft-pink-500 border-[0.5px] md:h-80 rounded-md">
-                        <Link to={`/categories/${catg.id}`}>
+                        <Link to={`/categories/${catg.id}/${catg.key}`}>
                         <div>
                             <img className="object-cover w-full h-60 md:h-72" src={catg.image} alt={catg.description} />
                         </div>
