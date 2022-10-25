@@ -8,10 +8,10 @@ const CategoryListContainer = () => {
     const {setCategories} = useContext(CategoryContext)
     useEffect(() => {
         const db = getFirestore()
-        const categoriesCollection = collection(db, 'productos')
-        getDocs(categoriesCollection).then(snapshot => {
-            const arrCategories = snapshot.docs.map((catgs) => ({ id: catgs.id, key: catgs.key, ...catgs.data()}))
-            setCategories(arrCategories)
+        const categoriesProdCollection = collection(db, 'tienda')
+        getDocs(categoriesProdCollection).then(snapshot => {
+            const arrProdCategories = snapshot.docs.map(catgs => ({...catgs.data()}))
+            setCategories(arrProdCategories)
         })
     }, [setCategories])
     return (
