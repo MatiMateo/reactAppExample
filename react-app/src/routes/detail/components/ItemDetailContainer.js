@@ -1,9 +1,10 @@
 import ArrowBack from "../../../components/ArrowBack";
-const ItemDetailContainer = ({children, className}) => {
+import ItemDetail from './ItemDetail'
+const ItemDetailContainer = ({className}) => {
     return (
         <div className={className}>
-            <ArrowBack className='absolute left-2 top-2' />
-            {children}
+            <ArrowBack className='absolute left-2 top-60' />
+            <ItemDetail />
         </div>
     )
 }

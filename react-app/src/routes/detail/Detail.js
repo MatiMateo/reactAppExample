@@ -1,26 +1,30 @@
 import { useEffect, useContext } from "react";
-/* import ItemDetailContainer from "./components/ItemDetailContainer";
-import ItemDetail from "./components/ItemDetail"; */
 import {getFirestore, collection, getDocs} from 'firebase/firestore';
 import { CategoryContext } from "../../contexts/CategoryContext";
-/* import { useParams } from "react-router-dom"; */
-/*import Counter from "../../components/Counter";*/
+import { useParams } from "react-router-dom";
+import ItemDetailContainer from './components/ItemDetailContainer'
 const Detail = () => {
-    const {categories, setCategories} = useContext(CategoryContext)
-    
+    const {setCategories} = useContext(CategoryContext)
+    const {id} = useParams()
     useEffect(() => {
-        const db = getFirestore()
-        const categoriesProdCollection = collection(db, 'tienda')
-        getDocs(categoriesProdCollection).then(snapshot => {
-            const arrProdCategories = snapshot.docs.map(catgs => ({id:catgs.id, key: catgs.key, ...catgs.data()}))
-            setCategories(arrProdCategories)
-        })
-    }, [categories, setCategories])
+        const db = getFirestore();
+        const data = collection(db, "tienda");
+        getDocs(data)
+          .then((value) => {
+            const resp = value.docs.map((value) => {
+              return value.data();
+            });
+            const prodList = resp[0].productos
+            const arrprod = prodList.filter(producto => producto.id === id)
+            const prod = arrprod[0]
+            console.log(prod)
+            setCategories(prod);
+          })
+          .catch((err) => console.log(err));
+      },[setCategories, id]);
 
     return (
-        <div>
-            {categories.map(u => <div>{console.log(u)}</div>)}
-        </div>
+        <ItemDetailContainer className='flex items-center justify-center' />
     )
 }
 

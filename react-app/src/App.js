@@ -16,7 +16,7 @@ function App() {
         <Routes>
               <Route path='/' element={<Home className='relative' />}></Route>
               <Route path='/categories' element={<CategoryListContainer className='relative' />}></Route>
-              <Route path='/categories/:id/:description' element={<Detail className='relative' />}></Route>
+              <Route path='/categories/:id' element={<Detail className='relative' />}></Route>
               <Route path='/cart' element={<CartContainer className='relative' />}></Route>
         </Routes>
         </CategoryContextProvider>
