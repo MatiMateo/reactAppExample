@@ -11,7 +11,6 @@ const ItemListContainer = () => {
         getDocs(tiendaCollection)
           .then((snapshot) => {
             const prods = snapshot.docs.map((prods) => ({id:prods.id, ...prods.data()}));
-            console.log(prods)
             setProductos(prods);
           })
           .catch((err) => console.log(err));

@@ -1,13 +1,12 @@
 import { useContext } from 'react';
 import Boton from '../../../components/Boton';
 import Counter from './Counter';
-import { CatalogoContext } from '../../../contexts/CatalogoContext';
+import { ProductosContext } from '../../../contexts/ProductosContext';
 const ItemDetail = () => {
-    const {productos} = useContext(CatalogoContext)
-    console.log(productos)
+    const {productDetail} = useContext(ProductosContext)
     return ( 
-        productos.map( prod =>
-        <div key={prod.id} className="flex flex-col items-center m-2 justify-center w-1/2 bg-verysoft-pink-500 border-verysoft-pink-500 border-[0.5px] rounded-md">
+        productDetail.map( prod =>
+        <div key={prod.key} className="flex flex-col items-center m-2 justify-center w-1/2 bg-verysoft-pink-500 border-verysoft-pink-500 border-[0.5px] rounded-md">
             <h1 className="p-2 text-3xl font-bold">{prod.name}</h1>
             <img className="p-2" src={prod.image} alt={prod.name} />
             <p className="p-2 text-lg font-semibold">${prod.price}</p>
