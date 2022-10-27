@@ -1,12 +1,9 @@
-import { useContext } from "react";
 import { useState } from "react";
-import { CategoryContext } from "../../../contexts/CategoryContext";
 
 const Counter = () => {
-    const {categories} = useContext(CategoryContext)
     const [counter, setCounter] = useState(0)
     const clickHandlerPlus = () => {
-        setCounter(counter < categories.stock ? counter + 1 : counter)
+        setCounter(counter + 1)
     }
     const clickHandlerMinus = () => {
         setCounter(counter > 0 ? counter - 1 : counter)
