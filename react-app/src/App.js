@@ -8,26 +8,29 @@ import { CatalogoContextProvider } from './contexts/CatalogoContext';
 import ItemListContainer from './components/ItemListContainer'
 import { ProductosContextProvider } from './contexts/ProductosContext';
 import { CategoriesContextProvider } from './contexts/CategoriesContext';
+import { CartContextProvider } from './contexts/CartContext';
 
 
 function App() {
   return (
-        <CatalogoContextProvider>
-          <CategoriesContextProvider>
-            <ProductosContextProvider>
-              <Router>
-                <NavbarContainer />
-                <Routes>
-                  <Route path='/' element={<Home className='relative' />}></Route>
-                  <Route path='/catalogo' element={<ItemListContainer className='relative' />}></Route>
-                  <Route path='/catalogo/:id' element={<Detail className='relative' />}></Route>
-                  <Route path='/categories/:id' element={<ItemListContainer className='relative' />}></Route>
-                  <Route path='/cart' element={<CartContainer className='relative' />}></Route>
-                </Routes>
-              </Router>
-            </ProductosContextProvider>
-          </CategoriesContextProvider>
-        </CatalogoContextProvider>
+        <CartContextProvider>
+          <CatalogoContextProvider>
+            <CategoriesContextProvider>
+              <ProductosContextProvider>
+                <Router>
+                  <NavbarContainer />
+                  <Routes>
+                    <Route path='/' element={<Home className='relative' />}></Route>
+                    <Route path='/catalogo' element={<ItemListContainer className='relative' />}></Route>
+                    <Route path='/catalogo/:id' element={<Detail className='relative' />}></Route>
+                    <Route path='/categories/:id' element={<ItemListContainer className='relative' />}></Route>
+                    <Route path='/cart' element={<CartContainer className='relative' />}></Route>
+                  </Routes>
+                </Router>
+              </ProductosContextProvider>
+            </CategoriesContextProvider>
+          </CatalogoContextProvider>
+        </CartContextProvider>
   );
 }
 
