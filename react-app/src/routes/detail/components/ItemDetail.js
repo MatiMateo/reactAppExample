@@ -1,3 +1,4 @@
+import '../../../App.css'
 import { useContext } from 'react';
 import Boton from '../../../components/Boton';
 import Counter from './Counter';
@@ -11,7 +12,12 @@ const ItemDetail = () => {
             <img className="p-2" src={prod.image} alt={prod.name} />
             <p className="p-2 text-lg font-semibold">${prod.price}</p>
             <p className="p-2 text-lg font-semibold">{prod.description}</p>
-            <div>{prod.size.map(t => <Boton>{t}</Boton>)}</div>
+            <div className='flex items-center w-2/4 justify-evenly'>
+                <p className='w-1/12 '>Talles:</p>
+                <div className='flex items-center w-9/12 justify-evenly'>
+                    {prod.size.map(t => <Boton>{t}</Boton>)}
+                </div>
+            </div>
             <Counter />
             <Boton>Agregar al carrito</Boton>
         </div>

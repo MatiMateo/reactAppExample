@@ -3,7 +3,7 @@ import ItemDetail from './ItemDetail'
 const ItemDetailContainer = ({className}) => {
     return (
         <div className={className}>
-            <ArrowBack className='absolute left-2 top-60' />
+            <ArrowBack className='fixed left-4 top-60' />
             <ItemDetail />
         </div>
     )

@@ -10,15 +10,11 @@ const Detail = () => {
     useEffect(() => {
       const db = getFirestore();
       const prodList = collection(db, 'tienda')
-      const prod = query(prodList, where('key', '==', `${id}`))
-      getDocs(prod)
-      .then(snapshot => {
-        if (snapshot.size === 0){
-          const prodDetail = snapshot.docs.map(doc => doc.data())
-          setProductDetail(prodDetail)
-        }
-      })
-      .catch((err) => console.log(err));
+      if (id) {
+        const prod = query(prodList, where('key', '==', `${id}`))
+        getDocs(prod).then((res) => setProductDetail(res.docs.map((item => (item.data())))))
+        .catch((err) => console.log(err));
+      }
     },[setProductDetail, id]);
 
     return (

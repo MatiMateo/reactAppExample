@@ -5,24 +5,28 @@ import Detail from './routes/detail/Detail';
 import Home from './routes/home/Home';
 import CartContainer from './routes/cart/CartContainer';
 import { CatalogoContextProvider } from './contexts/CatalogoContext';
-import ItemListContainer from './routes/catalogo/ItemListContainer';
+import ItemListContainer from './components/ItemListContainer'
 import { ProductosContextProvider } from './contexts/ProductosContext';
+import { CategoriesContextProvider } from './contexts/CategoriesContext';
 
 
 function App() {
   return (
         <CatalogoContextProvider>
-        <ProductosContextProvider>
-      <Router>
-        <NavbarContainer />
-        <Routes>
-              <Route path='/' element={<Home className='relative' />}></Route>
-              <Route path='/catalogo' element={<ItemListContainer className='relative' />}></Route>
-              <Route path='/catalogo/:id' element={<Detail className='relative' />}></Route>
-              <Route path='/cart' element={<CartContainer className='relative' />}></Route>
-        </Routes>
-      </Router>
-        </ProductosContextProvider>
+          <CategoriesContextProvider>
+            <ProductosContextProvider>
+              <Router>
+                <NavbarContainer />
+                <Routes>
+                  <Route path='/' element={<Home className='relative' />}></Route>
+                  <Route path='/catalogo' element={<ItemListContainer className='relative' />}></Route>
+                  <Route path='/catalogo/:id' element={<Detail className='relative' />}></Route>
+                  <Route path='/categories/:id' element={<ItemListContainer className='relative' />}></Route>
+                  <Route path='/cart' element={<CartContainer className='relative' />}></Route>
+                </Routes>
+              </Router>
+            </ProductosContextProvider>
+          </CategoriesContextProvider>
         </CatalogoContextProvider>
   );
 }

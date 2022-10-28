@@ -3,7 +3,7 @@ import Item from "./Item";
 
 const ItemList = () => {
     return (
-        <div className="mt-2 itemList">
+        <div className="w-full mt-2 itemList ">
             <Item />
         </div>
     )
