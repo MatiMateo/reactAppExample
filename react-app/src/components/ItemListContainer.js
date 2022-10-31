@@ -10,13 +10,13 @@ import Boton from './Boton';
 const ItemListContainer = () => {
     const {setProductos} = useContext(CatalogoContext)
     const {setCategories} = useContext(CategoriesContext)
-    const {id} = useParams()
+    const {categoryId} = useParams()
     useEffect(() => {
         const db = getFirestore();
         const tiendaCollection = collection(db, "tienda");
         const categoriesCollection = collection(db, 'categorias')
-        if (id) {
-          const prods = query(tiendaCollection, where('categoryId', '==', `${id}`))
+        if (categoryId) {
+          const prods = query(tiendaCollection, where('categoryId', '==', `${categoryId}`))
           getDocs(prods).then((res) => setProductos(res.docs.map((item => (item.data())))))
           .catch((err) => console.log(err));
         } else {
@@ -29,7 +29,7 @@ const ItemListContainer = () => {
             setCategories(categories);
           })
           .catch((err) => console.log(err));  
-      },[setProductos, setCategories, id]);
+      },[setProductos, setCategories, categoryId]);
     return (
       <div className='flex flex-col items-center mt-4'>
         <div className='w-4/5 itemList'>

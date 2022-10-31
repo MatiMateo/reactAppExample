@@ -22,8 +22,8 @@ function App() {
                   <Routes>
                     <Route path='/' element={<Home className='relative' />}></Route>
                     <Route path='/catalogo' element={<ItemListContainer className='relative' />}></Route>
-                    <Route path='/catalogo/:id' element={<Detail className='relative' />}></Route>
-                    <Route path='/categories/:id' element={<ItemListContainer className='relative' />}></Route>
+                    <Route path='/catalogo/:key' element={<Detail className='relative' />}></Route>
+                    <Route path='/categories/:categoryId' element={<ItemListContainer className='relative' />}></Route>
                     <Route path='/cart' element={<CartContainer className='relative' />}></Route>
                   </Routes>
                 </Router>

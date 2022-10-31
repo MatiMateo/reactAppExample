@@ -6,16 +6,16 @@ import ItemDetailContainer from './components/ItemDetailContainer'
 
 const Detail = () => {
     const {setProductDetail} = useContext(ProductosContext)
-    const {id} = useParams()
+    const {key} = useParams()
     useEffect(() => {
       const db = getFirestore();
       const prodList = collection(db, 'tienda')
-      if (id) {
-        const prod = query(prodList, where('key', '==', `${id}`))
+      if (key) {
+        const prod = query(prodList, where('key', '==', `${key}`))
         getDocs(prod).then((res) => setProductDetail(res.docs.map((item => (item.data())))))
         .catch((err) => console.log(err));
       }
-    },[setProductDetail, id]);
+    },[setProductDetail, key]);
 
     return (
         <ItemDetailContainer className='flex items-center justify-center' />

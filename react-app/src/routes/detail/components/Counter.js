@@ -1,13 +1,24 @@
+import { useContext } from "react";
+import { useEffect } from "react";
 import { useState } from "react";
+import { CartContext } from "../../../contexts/CartContext";
+import { ProductosContext } from "../../../contexts/ProductosContext";
 
 const Counter = () => {
+    const {productDetail} = useContext(ProductosContext)
+    const {setQuantityProduct} = useContext(CartContext)
+    const prodStock = productDetail.map(prod => prod.stock)
     const [counter, setCounter] = useState(0)
     const clickHandlerPlus = () => {
-        setCounter(counter + 1)
+        setCounter(counter < prodStock ? counter + 1 : counter)
     }
     const clickHandlerMinus = () => {
         setCounter(counter > 0 ? counter - 1 : counter)
     }
+    useEffect(() => {
+        setQuantityProduct(counter)
+    }, [counter, setQuantityProduct])
+
     return (
         <div className="flex flex-row p-2">
             <div className="p-2">
