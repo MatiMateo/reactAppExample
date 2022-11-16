@@ -9,6 +9,7 @@ import ItemListContainer from './components/ItemListContainer'
 import { ProductosContextProvider } from './contexts/ProductosContext';
 import { CategoriesContextProvider } from './contexts/CategoriesContext';
 import { CartContextProvider } from './contexts/CartContext';
+import FooterContainer from './components/FooterContainer';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
                     <Route path='/categories/:categoryId' element={<ItemListContainer className='relative' />}></Route>
                     <Route path='/cart' element={<CartContainer className='relative' />}></Route>
                   </Routes>
+                  <FooterContainer />
                 </Router>
               </ProductosContextProvider>
             </CategoriesContextProvider>

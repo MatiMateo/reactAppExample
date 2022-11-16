@@ -6,11 +6,14 @@ const ContactForm = ({className, buyHandler}) => {
     const [btnBuy, setBtnBuy] = useState(false)
     const onSubmitHandler = (ev) => {
         ev.preventDefault()
-        setForm(form)
-        setBtnBuy(true)
+        if (form.email !== form.emailCheck || form.email === '') {
+            alert('Por favor verifique que se hayan ingresado los datos correctamente')
+        } else {
+            setBtnBuy(true)
+        }
     }
     const changeHandler = (ev) => {
-        setForm({...form, [ev.target.name]: ev.target.value})        
+            setForm({...form, [ev.target.name]: ev.target.value})
     }
     return (
         <form className={className} onSubmit={onSubmitHandler}>
@@ -33,12 +36,12 @@ const ContactForm = ({className, buyHandler}) => {
                 </div>
                 <div className="flex items-center justify-around p-2">
                     <label className="w-1/2" htmlFor="emailCheck">Repetir Email</label>
-                    <input className="w-1/2" type="email" name="emailCheck" id="emailCheck" value={form.email || ''} onChange={changeHandler} />
+                    <input className={`${form.email !== form.emailCheck ? 'outline-none border-red-600 border-solid border-2' : form.email === '' ? '' : 'border-green-400 border-solid border-2 outline-none'} w-1/2`} type="email" name="emailCheck" id="emailCheck" value={form.emailCheck || ''} onChange={changeHandler} />
                 </div>
-                <div className={`${btnBuy === true ? 'hidden' : 'flex items-center justify-center mt-2'}`}>
+                <div className={`${btnBuy === true ? 'hidden' : 'flex items-center justify-center my-2'}`}>
                     <Boton >Guardar</Boton>
                 </div>
-                <div className={`${btnBuy === false ? 'hidden' : 'flex items-center justify-center mt-2'}`}>
+                <div className={`${btnBuy === false ? 'hidden' : 'flex items-center justify-center my-2'}`}>
                     <Boton onClick={buyHandler} >Comprar</Boton>
                 </div>
             </div>

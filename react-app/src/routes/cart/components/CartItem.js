@@ -45,7 +45,7 @@ const CartItem = () => {
             </div>
         </div>)}
         <div className={`${cartProducts.length === 0 ? 'hidden' : 'flex items-center justify-around w-full h-10 p-2 mt-2 bg-soft-pink-500 rounded-md'}`}>
-                Total: $ {totalPrice()}
+                Total: $ {totalPrice}
         </div>
         </div>
         <Boton className={`${cartProducts.length === 0 ? 'hidden' : 'flex mt-2'}`} onClick={clearCart} >Vaciar Carrito</Boton>
