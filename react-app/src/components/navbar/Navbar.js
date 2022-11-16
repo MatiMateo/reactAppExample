@@ -23,20 +23,20 @@ const Navbar = ({className}) => {
   }
     return (
       <div className={className}>
-        <nav className="flex items-center justify-end w-full text-white">
+        <nav className="flex items-center justify-end sm:justify-around w-full text-white">
           <ul className={`${ menuMovil ? 'hidden' : 'flex'} absolute shadow-2xl slide-bottom shadow-black rounded-lg sm:relative sm:top-0 sm:z-10 p-2 flex-col items-center justify-center text-right w-full left-0 bg-black -z-50 opacity-95 sm:opacity-100 top-[18vw] sm:flex sm:flex-row`}>
-              <li className='w-full sm:text-center'><Link to={'/catalogo'}>Productos</Link></li>
+              <li className='w-full my-2 sm:m-0 sm:text-center'><Link to={'/catalogo'}>Productos</Link></li>
               <li className='flex flex-col w-full my-2 sm:m-0 sm:items-center'>
                 <BotonMenuContacto onClick={toggleMenuContacto} type='button' className='relative flex flex-row items-end justify-end' />
                 <MenuContacto className={`${ menuContacto ? 'flex' : 'hidden'} absolute flex-col w-36 text-center bg-black rounded-lg menuContacto top-10`}/>
               </li>
-              <li>
-                <BotonMenuCategories onClick={toggleMenuCategories} type='button' className='relative flex flex-row items-end justify-end' />
+              <li className='flex flex-col w-full my-2 sm:m-0 sm:items-center'>
+                <BotonMenuCategories onClick={toggleMenuCategories} type='button' className='relative flex flex-row items-endx justify-end' />
                 <MenuCategories className={`${ menuCategories ? 'flex' : 'hidden'} absolute flex-col w-36 text-center bg-black rounded-lg menuContacto top-10`}/>
               </li>
-              <li className='w-full'><Link to={'/cart'}><CartWidget className='relative flex justify-end w-full sm:place-content-center'/></Link></li>
+              <li className='w-full my-2 sm:m-0'><Link to={'/cart'}><CartWidget className='relative flex justify-end w-full sm:place-content-center'/></Link></li>
           </ul>
-            <MenuMovil onClick={toggleMenuMovil} className='relative z-30 flex sm:hidden'/>
+            <MenuMovil onClick={toggleMenuMovil} className='relative z-30 flex justify-end sm:hidden'/>
         </nav>
       </div>
     )
