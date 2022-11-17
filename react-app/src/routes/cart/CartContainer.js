@@ -14,7 +14,7 @@ const CartContainer = () => {
         setOrder({...prodOnCart, 'buyDate': fechaActual.toUTCString(), 'state': 'Generada', 'buyerName':form.name, 'buyerLastName':form.lastname, 'buyerPhone':form.phone, 'buyerEmail':form.email, 'totalprice':totalPrice})
         const db = getFirestore()
         const ordersCollection = collection(db, 'orders')
-        addDoc(ordersCollection, order).then(snapshot => alert(`Su orden ha sido generada con el siguiente id: ${snapshot.id}.
+        addDoc(ordersCollection, {...order}).then(snapshot => alert(`Su orden ha sido generada con el siguiente id: ${snapshot.id}.
         Detalle: ${prodOnCartName}, por $ ${totalPrice}`))
     }
     return (
